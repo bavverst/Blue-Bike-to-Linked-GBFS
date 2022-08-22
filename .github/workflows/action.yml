@@ -34,7 +34,7 @@ jobs:
       - run: |
           echo "${{ env.DATE }},${{ env.FILE }}.ttl" >> list.csv
       # generate root.ttl
-      - run: java -jar rmlmapper-5.0.0-r362-all.jar -m root.rml.ttl
+      - run: java -jar rmlmapper-6.0.0-r363-all.jar -m root.rml.ttl
       # make everything public
       - run: cp ./history/*.ttl ./public/history/
       - run: cp root.ttl ./public/root.ttl
