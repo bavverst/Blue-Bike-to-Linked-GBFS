@@ -26,7 +26,7 @@
   ];
 
   rr:subjectMap [ 
-    rr:template "https://www.pieter.pm/Blue-Bike-to-Linked-GBFS/history/root.ttl";
+    rr:template "https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/root.ttl";
     rml:logicalTarget <#TargetDump>;
   ]; 
 	
@@ -66,7 +66,7 @@
   rr:predicateObjectMap [ 
     rr:predicate tree:node; 
     rr:objectMap [
-      rr:template "https://www.pieter.pm/Blue-Bike-to-Linked-GBFS/history/{file}";
+      rr:template "https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/{file}";
       rr:termType rr:IRI;
     ];
   ]
