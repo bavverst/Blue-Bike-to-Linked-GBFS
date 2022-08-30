@@ -24,6 +24,7 @@
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix elements: <http://purl.org/dc/elements/1.1/> .
 @prefix tree: <https://w3id.org/tree#> .
 @prefix ldes: <https://w3id.org/ldes#> .
 @prefix idlab: <http://example.com/idlab/function/> .
@@ -188,47 +189,7 @@
     rr:predicate tree:member;
     rr:objectMap [ 
       a rr:ObjectMap;
-      rr:parentTriplesMap <#StationsTriplesMap>;
-      rr:termType rr:IRI;
-    ];
-  ];
-  rr:predicateObjectMap [
-    rr:predicate tree:member;
-    rr:objectMap [ 
-      a rr:ObjectMap;
-      rr:parentTriplesMap <#Capacity>;
-      rr:termType rr:IRI;
-    ];
-  ];
-  rr:predicateObjectMap [
-    rr:predicate tree:member;
-    rr:objectMap [ 
-      a rr:ObjectMap;
-      rr:parentTriplesMap <#Geometry>;
-      rr:termType rr:IRI;
-    ];
-  ];
-  rr:predicateObjectMap [
-    rr:predicate tree:member;
-    rr:objectMap [ 
-      a rr:ObjectMap;
-      rr:parentTriplesMap <#Status>;
-      rr:termType rr:IRI;
-    ];
-  ];
-  rr:predicateObjectMap [
-    rr:predicate tree:member;
-    rr:objectMap [ 
-      a rr:ObjectMap;
-      rr:parentTriplesMap <#VehicleType>;
-      rr:termType rr:IRI;
-    ];
-  ];
-  rr:predicateObjectMap [
-    rr:predicate tree:member;
-    rr:objectMap [ 
-      a rr:ObjectMap;
-      rr:parentTriplesMap <#VervoerMiddel>;
+      rr:parentTriplesMap <#ResourceReport>;
       rr:termType rr:IRI;
     ];
   ];
@@ -293,6 +254,19 @@
     rr:objectMap [
       rr:constant hubs:ResourceReport;  rr:termType rr:IRI;
     ];
+  ];
+  rr:predicateObjectMap [
+    rr:predicate hubs:service;
+    rr:objectMap[
+      rr:constant "https://blue-bike.be/#me";  rr:termType rr:IRI;
+    ];
+  ];
+  rr:predicateObjectMap [
+    rr:predicate elements:date;
+    rr:objectMap[
+      rml:reference "last_seen";  
+      rr:datatype xsd:dateTime;
+    ]; 
   ];
   rr:predicateObjectMap[
     rr:predicate dienst:vervoermiddel;
@@ -366,6 +340,80 @@
         ];
     ];
     rr:termType rr:IRI;
+    ];
+  ];
+  rr:predicateObjectMap[
+    rr:predicate hubs:propulsion;
+    rr:objectMap[
+      fnml:functionValue [
+        rr:predicateObjectMap [
+            rr:predicate fno:executes ;
+            rr:objectMap [ rr:constant grel:array_join ]
+        ];
+        rr:predicateObjectMap [
+            rr:predicate grel:p_array_a ;
+            rr:objectMap [ rr:template "https://blue-bike.be/resourcereports/actuator/{id}" ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate grel:p_array_a ;
+          rr:objectMap [ 
+            fnml:functionValue [
+              rr:predicateObjectMap [
+                  rr:predicate fno:executes ;
+                  rr:objectMap [ rr:constant grel:array_join ]
+              ];
+      
+              rr:predicateObjectMap [
+                  rr:predicate grel:p_array_a ;
+                  rr:objectMap [ rr:constant "#" ]
+              ];
+
+              rr:predicateObjectMap [
+                  rr:predicate grel:p_array_a ;
+                  rr:objectMap [ rml:reference "last_seen" ]
+              ];
+            ];
+          ];
+        ];
+      ];
+      rr:termType rr:IRI;
+    ];
+  ];
+  rr:predicateObjectMap[
+    rr:predicate dcterms:type;
+    rr:objectMap[
+      fnml:functionValue [
+        rr:predicateObjectMap [
+            rr:predicate fno:executes ;
+            rr:objectMap [ rr:constant grel:array_join ]
+        ];
+        rr:predicateObjectMap [
+            rr:predicate grel:p_array_a ;
+            rr:objectMap [ rr:template "https://blue-bike.be/resourcereports/type/{id}" ]
+        ];
+        rr:predicateObjectMap [
+          rr:predicate grel:p_array_a ;
+          rr:objectMap [ 
+            fnml:functionValue [
+              rr:predicateObjectMap [
+                  rr:predicate fno:executes ;
+                  rr:objectMap [ rr:constant grel:array_join ]
+              ];
+      
+              rr:predicateObjectMap [
+                  rr:predicate grel:p_array_a ;
+                  rr:objectMap [ rr:constant "#" ]
+              ];
+
+              rr:predicateObjectMap [
+                  rr:predicate grel:p_array_a ;
+                  rr:objectMap [ rml:reference "last_seen" ]
+              ];
+            ];
+          ];
+        ];
+      ];
+      rr:termType rr:IRI;
     ];
   ];
   rr:predicateObjectMap [
@@ -784,7 +832,8 @@
   rr:predicateObjectMap[
     rr:predicate skos:prefLabel;
     rr:objectMap [
-      rr:constant "bicycle"@en;
+      rr:constant "bicycle";
+      rr:language "en";
     ];
   ];
 .
@@ -839,7 +888,8 @@
   rr:predicateObjectMap[
     rr:predicate skos:prefLabel;
     rr:objectMap [
-      rr:constant "bicycle"@en;
+      rr:constant "bicycle";
+      rr:language "en";
     ];
   ];
 .
@@ -894,7 +944,120 @@
   rr:predicateObjectMap[
     rr:predicate skos:prefLabel;
     rr:objectMap [
-      rr:constant "available"@en;
+      rr:constant "available";
+      rr:language "en";
+    ];
+  ];
+.
+<#Actuator> a rr:TriplesMap;
+  rml:logicalSource [
+    a rml:LogicalSource;
+    rml:source <#WoTWebAPISource>;
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]";
+  ];
+  rr:subjectMap [
+      fnml:functionValue [
+        rr:predicateObjectMap [
+            rr:predicate fno:executes ;
+            rr:objectMap [ rr:constant grel:array_join ]
+        ];
+        rr:predicateObjectMap [
+            rr:predicate grel:p_array_a ;
+            rr:objectMap [ rr:template "https://blue-bike.be/resourcereports/actuator/{id}" ]
+        ];
+        rr:predicateObjectMap [
+            rr:predicate grel:p_array_a ;
+            rr:objectMap [ 
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate fno:executes ;
+                        rr:objectMap [ rr:constant grel:array_join ]
+                    ];
+            
+                    rr:predicateObjectMap [
+                        rr:predicate grel:p_array_a ;
+                        rr:objectMap [ rr:constant "#" ]
+                    ];
+
+                    rr:predicateObjectMap [
+                        rr:predicate grel:p_array_a ;
+                        rr:objectMap [ rml:reference "last_seen" ]
+                    ];
+                ];
+            ];
+        ];
+    ];
+    rr:termType rr:IRI;
+    rml:logicalTarget <#TargetDump>;
+  ];
+  rr:predicateObjectMap [
+    rr:predicate rdf:type;
+    rr:objectMap [
+      rr:constant skos:Concept; rr:termType rr:IRI;
+    ];
+  ];
+  rr:predicateObjectMap[
+    rr:predicate skos:prefLabel;
+    rr:objectMap [
+      rr:constant "human";
+      rr:language "en";
+    ];
+  ];
+.
+<#Type> a rr:TriplesMap;
+  rml:logicalSource [
+    a rml:LogicalSource;
+    rml:source <#WoTWebAPISource>;
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.[*]";
+  ];
+  rr:subjectMap [
+      fnml:functionValue [
+        rr:predicateObjectMap [
+            rr:predicate fno:executes ;
+            rr:objectMap [ rr:constant grel:array_join ]
+        ];
+        rr:predicateObjectMap [
+            rr:predicate grel:p_array_a ;
+            rr:objectMap [ rr:template "https://blue-bike.be/resourcereports/type/{id}" ]
+        ];
+        rr:predicateObjectMap [
+            rr:predicate grel:p_array_a ;
+            rr:objectMap [ 
+                fnml:functionValue [
+                    rr:predicateObjectMap [
+                        rr:predicate fno:executes ;
+                        rr:objectMap [ rr:constant grel:array_join ]
+                    ];
+            
+                    rr:predicateObjectMap [
+                        rr:predicate grel:p_array_a ;
+                        rr:objectMap [ rr:constant "#" ]
+                    ];
+
+                    rr:predicateObjectMap [
+                        rr:predicate grel:p_array_a ;
+                        rr:objectMap [ rml:reference "last_seen" ]
+                    ];
+                ];
+            ];
+        ];
+    ];
+    rr:termType rr:IRI;
+    rml:logicalTarget <#TargetDump>;
+  ];
+  rr:predicateObjectMap [
+    rr:predicate rdf:type;
+    rr:objectMap [
+      rr:constant skos:Concept; rr:termType rr:IRI;
+    ];
+  ];
+  rr:predicateObjectMap[
+    rr:predicate skos:prefLabel;
+    rr:objectMap [
+      rr:constant "vehicle";
+      rr:language "en";
     ];
   ];
 .
