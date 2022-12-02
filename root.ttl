@@ -40294,6 +40294,11 @@ _:20221201T2356282ettl a <https://w3id.org/tree#GreaterThanOrEqualToRelation>;
   <https://w3id.org/tree#path> <http://purl.org/dc/terms/created>;
   <https://w3id.org/tree#value> "2022-12-01T23:56:28"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
 
+_:20221202T0034412ettl a <https://w3id.org/tree#GreaterThanOrEqualToRelation>;
+  <https://w3id.org/tree#node> <https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/20221202T003441.ttl>;
+  <https://w3id.org/tree#path> <http://purl.org/dc/terms/created>;
+  <https://w3id.org/tree#value> "2022-12-02T00:34:41"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
 <https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/root.ttl> <https://w3id.org/tree#relation>
     _:20220830T0927542ettl, _:20220830T0928522ettl, _:20220830T0939552ettl, _:20220830T0947462ettl,
     _:20220830T0953042ettl, _:20220830T0958112ettl, _:20220830T1013052ettl, _:20220830T1032552ettl,
@@ -42309,14 +42314,7 @@ _:20221201T2356282ettl a <https://w3id.org/tree#GreaterThanOrEqualToRelation>;
     _:20221201T2212002ettl, _:20221201T2225552ettl, _:20221201T2232362ettl, _:20221201T2238482ettl,
     _:20221201T2244062ettl, _:20221201T2249082ettl, _:20221201T2254282ettl, _:20221201T2259402ettl,
     _:20221201T2314072ettl, _:20221201T2327542ettl, _:20221201T2334592ettl, _:20221201T2340582ettl,
-    _:20221201T2346062ettl, _:20221201T2351162ettl, _:20221201T2356282ettl, _:20221202T0034412ettl .
-
-_:20221202T0034412ettl a <https://w3id.org/tree#GreaterThanOrEqualToRelation>;
-  <https://w3id.org/tree#node> <https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/20221202T003441.ttl>;
-  <https://w3id.org/tree#path> <http://purl.org/dc/terms/created>;
-  <https://w3id.org/tree#value> "2022-12-02T00:34:41"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
-
-<https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/root.ttl> <https://w3id.org/tree#relation>
+    _:20221201T2346062ettl, _:20221201T2351162ettl, _:20221201T2356282ettl, _:20221202T0034412ettl,
     _:20221202T0206582ettl .
 
 _:20221202T0206582ettl a <https://w3id.org/tree#GreaterThanOrEqualToRelation>;
@@ -42507,3 +42505,11 @@ _:20221202T0609032ettl a <https://w3id.org/tree#GreaterThanOrEqualToRelation>;
   <https://w3id.org/tree#node> <https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/20221202T060903.ttl>;
   <https://w3id.org/tree#path> <http://purl.org/dc/terms/created>;
   <https://w3id.org/tree#value> "2022-12-02T06:09:03"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/root.ttl> <https://w3id.org/tree#relation>
+    _:20221202T0629382ettl .
+
+_:20221202T0629382ettl a <https://w3id.org/tree#GreaterThanOrEqualToRelation>;
+  <https://w3id.org/tree#node> <https://bavverst.github.io/Blue-Bike-to-Linked-GBFS/history/20221202T062938.ttl>;
+  <https://w3id.org/tree#path> <http://purl.org/dc/terms/created>;
+  <https://w3id.org/tree#value> "2022-12-02T06:29:38"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
